@@ -82,7 +82,10 @@ class App extends Component {
             {/* <AppFooter /> */}
           </Route>
           <Route path="/search">
-            <BookSearch updateBookShelves={this.updateBookShelves} />
+            <BookSearch
+              shelves={this.state}
+              updateBookShelves={this.updateBookShelves}
+            />
           </Route>
         </Switch>
       </div>

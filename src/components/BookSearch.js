@@ -27,7 +27,9 @@ export default class BookSearch extends Component {
     if (query) {
       this.timeout = setTimeout(() => {
         BooksAPI.search(query).then((books) => {
-          this.setState({ searchResult: books });
+          this.setState({ searchResult: this.checkBooks(books) }, () => {
+            console.log(this.state);
+          });
         });
       }, 800);
     } else {
@@ -35,8 +37,37 @@ export default class BookSearch extends Component {
     }
 
     this.setState({
-      query: query.trim(),
+      query: query,
     });
+  };
+
+  checkBooks = (books) => {
+    const { shelves } = this.props;
+    console.log(shelves);
+    const { currentlyReading, wantToRead, read } = shelves;
+    console.log(currentlyReading);
+    // const modifiedSearchResult = [];
+    for (let book of books) {
+      for (let b of currentlyReading) {
+        if (b.id === book.id) {
+          book.shelf = "currentlyReading";
+        }
+      }
+
+      for (let b of wantToRead) {
+        if (b.id === book.id) {
+          book.shelf = "wantToRead";
+        }
+      }
+
+      for (let b of read) {
+        if (b.id === book.id) {
+          book.shelf = "read";
+        }
+      }
+      book.shelf = book.shelf || "none";
+    }
+    return books;
   };
 
   render() {
@@ -67,6 +98,7 @@ export default class BookSearch extends Component {
                   key={book.id}
                   book={book}
                   updateBookShelves={updateBookShelves}
+                  shelf={book.shelf}
                 />
               ))
             )}

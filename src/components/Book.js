@@ -4,11 +4,11 @@ import * as BooksAPI from "../BooksAPI";
 
 class Book extends Component {
   state = {
-    shelf: "none",
+    shelf: null,
   };
 
   componentDidMount = () => {
-    const shelf = this.props.book.shelf ? this.props.book.shelf : "none";
+    const shelf = this.props.shelf;
     this.setState({
       shelf: shelf,
     });
@@ -22,7 +22,7 @@ class Book extends Component {
   };
 
   render() {
-    const { book } = this.props;
+    const { book, shelf } = this.props;
     return (
       <li className="book">
         <div>
@@ -32,36 +32,13 @@ class Book extends Component {
               alt="book thumbnail"
             />
           </a>
-          <div
-            className="book-shelf-changer"
-            onClick={(e) => {
-              if (e.target.parentElement.style.transform !== "rotate(180deg)") {
-                e.target.parentElement.style.transform = "rotate(180deg)";
-              } else {
-                e.target.parentElement.style.transform = "rotate(0)";
-              }
-            }}
-          >
-            <select onChange={this.handleChange}>
+          <div className="book-shelf-changer">
+            <select value={shelf} onChange={this.handleChange}>
               <optgroup label="Move to">
-                <option
-                  selected={this.state.shelf === "currentlyReading"}
-                  value="currentlyReading"
-                >
-                  Currently reading
-                </option>
-                <option
-                  selected={this.state.shelf === "wantToRead"}
-                  value="wantToRead"
-                >
-                  Want to read
-                </option>
-                <option selected={this.state.shelf === "read"} value="read">
-                  Read
-                </option>
-                <option selected={this.state.shelf === "none"} value="none">
-                  None
-                </option>
+                <option value="currentlyReading">Currently reading</option>
+                <option value="wantToRead">Want to read</option>
+                <option value="read">Read</option>
+                <option value="none">None</option>
               </optgroup>
             </select>
           </div>
