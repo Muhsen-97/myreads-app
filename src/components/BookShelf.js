@@ -5,7 +5,6 @@ import Book from "./Book";
 
 const BookShelf = (props) => {
   const { className, books, updateBookShelves } = props;
-  console.log(typeof updateShelves);
   return (
     <div className="bookshelf">
       {className === "currently-reading" && (

@@ -23,6 +23,7 @@ export default class BookSearch extends Component {
       this.timeout = null;
     }
 
+    // this will debounce the API call so that if the user deletes the input so fast, no state issues could happen
     if (query) {
       this.timeout = setTimeout(() => {
         BooksAPI.search(query).then((books) => {

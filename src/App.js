@@ -54,7 +54,6 @@ class App extends Component {
 
   render() {
     const { currentlyReading, wantToRead, read } = this.state;
-    console.log(typeof this.updateBookShelves);
     return (
       <div className="app">
         <Switch>
