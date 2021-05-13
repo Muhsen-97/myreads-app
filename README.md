@@ -1,4 +1,4 @@
-# First React Project from Udacity (myreads-app)
+# First React Project from Udacity (MyReads: A Book Tracking App)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
