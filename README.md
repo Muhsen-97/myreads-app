@@ -1,4 +1,4 @@
-# First React Project from Udacity (myreads-app)
+# First React Project from Udacity (MyReads: A Book Tracking App)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -44,4 +44,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Hosting
 
-You can find a hosted version of the app on firebase [here](https://myreads-app-3e863.web.app/)
+A hosted version of the app on firebase can be found [here](https://myreads-app-3e863.web.app/)
