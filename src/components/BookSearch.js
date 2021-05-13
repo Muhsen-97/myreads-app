@@ -27,9 +27,7 @@ export default class BookSearch extends Component {
     if (query) {
       this.timeout = setTimeout(() => {
         BooksAPI.search(query).then((books) => {
-          this.setState({ searchResult: this.checkBooks(books) }, () => {
-            console.log(this.state);
-          });
+          this.setState({ searchResult: this.checkBooks(books) });
         });
       }, 800);
     } else {
@@ -43,10 +41,7 @@ export default class BookSearch extends Component {
 
   checkBooks = (books) => {
     const { shelves } = this.props;
-    console.log(shelves);
     const { currentlyReading, wantToRead, read } = shelves;
-    console.log(currentlyReading);
-    // const modifiedSearchResult = [];
     for (let book of books) {
       for (let b of currentlyReading) {
         if (b.id === book.id) {
